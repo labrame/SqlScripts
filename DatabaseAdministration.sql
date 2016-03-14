@@ -25,3 +25,28 @@ ORDER BY
 	context
 	,name;
 
+--Role apply for both user and group some can loggin other cant
+CREATE ROLE leo LOGIN PASSWORD 'lion!king'
+CREATEDB VALID UNTIL 'infinity';
+
+CREATE ROLE regina LOGIN PASSWORD 'queen!password'
+SUPERUSER VALID UNTIL '2016-04-01 00:00';
+
+CREATE ROLE jungle INHERIT;
+
+GRANT jungle TO LEO;
+
+--Create database
+CREATE DATABASE mydb;
+
+--Create database with template
+CREATE DATABASE mydb TEMPLATE template0;
+
+--Set the new database as template to allow user with CREATEDB role to create database
+UPDATE pg_database SET datistemplate=true WHERE datname='mydb'
+
+--Schema
+CREATE SCHEMA contrib
+
+--Make all object in contrin available without schema qualification
+ALTER DATABASE mydb SET search_path="$user",public,contrib
