@@ -1,0 +1,15 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostgrSqlUpAndRuning", "PostgrSqlUpAndRuning", "{19A46DE6-5955-40C4-A23D-64ED3B37415F}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseAdministration.sql = DatabaseAdministration.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
