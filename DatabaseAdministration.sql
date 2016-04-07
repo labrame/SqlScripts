@@ -48,5 +48,28 @@ UPDATE pg_database SET datistemplate=true WHERE datname='mydb'
 --Schema
 CREATE SCHEMA contrib
 
---Make all object in contrin available without schema qualification
+--Make all object in contrib available without schema qualification
 ALTER DATABASE mydb SET search_path="$user",public,contrib
+
+--Permission
+--defining permission on a schema
+GRANT USAGE ON SCHEMA contrib TO public;
+ALTER DEFAULT PRIVILEGES IN SCHEMA contrib
+GRANT SELECT, REFERENCES ON TABLES TO public;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA contrib
+	GRANT SELECT, UPDATE ON SEQUENCES TO public;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA contrib
+	GRANT EXECUTE ON FUNCTIONS TO public;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA contrib
+	GRANT USAGE ON TYPES TO public; 
+
+--setting permission on existing object
+GRANT USAGE ON SCHEMA contrib TO public;
+GRANT SELECT, REFERENCES, TRIGGER
+	ON ALL TABLES IN SCHEMA contrib TO public;
+
+GRANT EXECUTE ON ALL FUNCTION IN SCHEMA contrib TO public;
+GRANT SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA contrib TO public;
